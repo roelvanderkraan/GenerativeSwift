@@ -11,7 +11,7 @@ import SwiftUI
 struct GenerativeApp: App {
     var body: some Scene {
         WindowGroup {
-            FourJan2025()
+            Genuary5()
         }
     }
 }

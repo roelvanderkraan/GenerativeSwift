@@ -66,6 +66,7 @@ struct FourJan2025: View {
                 context.stroke(path, with: .color(.black), lineWidth: 2.0)
             }
         }
+        .ignoresSafeArea()
     }
 }
 
