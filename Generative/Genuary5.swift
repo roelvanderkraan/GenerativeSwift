@@ -13,6 +13,7 @@ struct Genuary5: View {
     // https://swiftwithmajid.com/2023/04/11/mastering-canvas-in-swiftui/
     //https://happycoding.io/tutorials/p5js/creating-classes/isometric-cubes
     //https://swiftui-lab.com/swiftui-animations-part4/
+    // https://www.hackingwithswift.com/quick-start/swiftui/how-to-add-metal-shaders-to-swiftui-views-using-layer-effects
     @State private var cubeSize: CGFloat = 50
    private let animationDuration: Double = 2.0
     
@@ -24,7 +25,7 @@ struct Genuary5: View {
                 let columns = 20
                 let startX: CGFloat = size.width / 2
                 let startY: CGFloat = cubeSize
-                
+                context.addFilter(.contrast(20.0))
                 for row in 0..<rows {
                     for column in 0..<columns {
                         let xOffset = CGFloat(column - row) * cubeSize  * -(now.remainder(dividingBy:4)) * 0.5
@@ -35,9 +36,11 @@ struct Genuary5: View {
                         drawIsometricCube(context: &context, origin: cubeOrigin, size: cubeSize)
                     }
                 }
+                
             }
         }
         .background(Color.black)
+        
     }
     
     private func drawIsometricCube(context: inout GraphicsContext, origin: CGPoint, size: CGFloat) {
