@@ -11,30 +11,60 @@ struct Genuary6: View {
     var body: some View {
         var currentX = 5.0
         var currentY = 0.0
-        var triangleSize = 400.0
+        var triangleSize = 1000.0
         var outerRadius = 1200.0
         var columns = 10
-        var columnSpacer = 24.0
+        var columnSpacer = -80.0
         var brightness = 0.0
 //        TimelineView(.animation) { timeline in
 //            let now = timeline.date.timeIntervalSinceReferenceDate
             Canvas { context, size in
+                var centerY = size.height - triangleSize
                 
-            var centerY = size.height - triangleSize * 1.5
+                triangleSize = 1000.0
+                centerY = size.height - triangleSize
+                
+               
                 for loopCount in (0..<columns) {
-                    let centerX = (Double(loopCount) * triangleSize - columnSpacer)
+                    let centerX = -triangleSize + (Double(loopCount) * triangleSize*0.5 + columnSpacer)
+                    let height = triangleSize * Double.random(in: 0.6...1)
                     
-                    let rect = CGRect(origin: CGPoint(x: centerX, y: centerY), size: CGSize(width: triangleSize, height: triangleSize * Double.random(in: 1...2)))
+                    let rect = CGRect(origin: CGPoint(x: centerX, y: centerY + (triangleSize - height)), size: CGSize(width: triangleSize, height: height))
                     var trianglePaths = Triangle().path(in: rect)
-                    context.fill(trianglePaths, with: .color(color(red: 30, green: 97, blue: 83)))
+                    context.fill(trianglePaths, with: .color(color(red: 255, green: 200, blue: 83)))
                 }
                 
+                triangleSize = 900.0
                 centerY = size.height - triangleSize
                 
                 for loopCount in (0..<columns) {
-                    let centerX = -50 + (Double(loopCount) * triangleSize - columnSpacer)
+                    let centerX = -600 + (Double(loopCount) * triangleSize * 0.8 + columnSpacer)
+                    let height = triangleSize * Double.random(in: 0.5...1)
                     
-                    let rect = CGRect(origin: CGPoint(x: centerX, y: centerY), size: CGSize(width: triangleSize, height: triangleSize * Double.random(in: 1...2)))
+                    let rect = CGRect(origin: CGPoint(x: centerX, y: centerY + (triangleSize - height)), size: CGSize(width: triangleSize, height: height))
+                    var trianglePaths = Triangle().path(in: rect)
+                    context.fill(trianglePaths, with: .color(color(red: 150, green: 97, blue: 83)))
+                }
+                
+                triangleSize = 500.0
+                centerY = size.height - triangleSize
+                
+               
+                for loopCount in (0..<columns) {
+                    let centerX = (Double(loopCount) * triangleSize * 0.8 + columnSpacer)
+                    let height = triangleSize * Double.random(in: 0.6...1)
+                    
+                    let rect = CGRect(origin: CGPoint(x: centerX, y: centerY + (triangleSize - height)), size: CGSize(width: triangleSize, height: height))
+                    var trianglePaths = Triangle().path(in: rect)
+                    context.fill(trianglePaths, with: .color(color(red: 90, green: 97, blue: 83)))
+                }
+                
+                triangleSize = 200.0
+                centerY = size.height - triangleSize
+                for loopCount in (0..<columns) {
+                    let centerX = -200 + (Double(loopCount) * triangleSize * 0.8 - columnSpacer)
+                    let height = triangleSize * Double.random(in: 0.3...1)
+                    let rect = CGRect(origin: CGPoint(x: centerX, y: centerY + (triangleSize - height)), size: CGSize(width: triangleSize, height: height))
                     var trianglePaths = Triangle().path(in: rect)
                     context.fill(trianglePaths, with: .color(color(red: 0, green: 87, blue: 83)))
                 }
