@@ -93,6 +93,8 @@ struct Genuary5: View {
 
         return Color(red: normalizedRed, green: normalizedGreen, blue: normalizedBlue)
     }
+    
+    
 }
 
 #Preview {
