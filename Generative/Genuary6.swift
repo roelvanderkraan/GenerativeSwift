@@ -11,28 +11,37 @@ struct Genuary6: View {
     var body: some View {
         var currentX = 5.0
         var currentY = 0.0
-        var innerRadius = 500.0
+        var triangleSize = 400.0
         var outerRadius = 1200.0
-        TimelineView(.animation) { timeline in
-            let now = timeline.date.timeIntervalSinceReferenceDate
+        var columns = 10
+        var columnSpacer = 24.0
+        var brightness = 0.0
+//        TimelineView(.animation) { timeline in
+//            let now = timeline.date.timeIntervalSinceReferenceDate
             Canvas { context, size in
-                let centerXOuter = size.width / 2 - outerRadius / 2
-                let centerYOuter = size.height / 2
-                let centerX = size.width / 2 - innerRadius / 2
-                let centerY = centerYOuter + (outerRadius / 17)
                 
-                let rectOuter = CGRect(origin: CGPoint(x: centerXOuter, y: centerYOuter), size: CGSize(width: outerRadius, height: outerRadius/3))
-                var pathOuter = Ellipse().path(in: rectOuter)
-                context.fill(pathOuter, with: .color(color(red: 0, green: 87, blue: 83)))
+            var centerY = size.height - triangleSize * 1.5
+                for loopCount in (0..<columns) {
+                    let centerX = (Double(loopCount) * triangleSize - columnSpacer)
+                    
+                    let rect = CGRect(origin: CGPoint(x: centerX, y: centerY), size: CGSize(width: triangleSize, height: triangleSize * Double.random(in: 1...2)))
+                    var trianglePaths = Triangle().path(in: rect)
+                    context.fill(trianglePaths, with: .color(color(red: 30, green: 97, blue: 83)))
+                }
                 
-               
+                centerY = size.height - triangleSize
                 
-                let rectInner = CGRect(origin: CGPoint(x: centerX, y: centerY), size: CGSize(width: innerRadius, height: innerRadius/3))
-                var pathInner = Ellipse().path(in: rectInner)
-                context.fill(pathInner, with: .color(color(red: 7, green: 180, blue: 185)))
+                for loopCount in (0..<columns) {
+                    let centerX = -50 + (Double(loopCount) * triangleSize - columnSpacer)
+                    
+                    let rect = CGRect(origin: CGPoint(x: centerX, y: centerY), size: CGSize(width: triangleSize, height: triangleSize * Double.random(in: 1...2)))
+                    var trianglePaths = Triangle().path(in: rect)
+                    context.fill(trianglePaths, with: .color(color(red: 0, green: 87, blue: 83)))
+                }
                 
                 
-            }
+                
+//            }
         }
         .ignoresSafeArea()
     }
@@ -43,6 +52,19 @@ struct Genuary6: View {
         let normalizedBlue = CGFloat(blue) / 255
 
         return Color(red: normalizedRed, green: normalizedGreen, blue: normalizedBlue)
+    }
+}
+
+struct Triangle: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+
+        path.move(to: CGPoint(x: rect.midX, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.midX, y: rect.minY))
+
+        return path
     }
 }
 
