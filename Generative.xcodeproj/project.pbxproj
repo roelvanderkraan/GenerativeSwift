@@ -24,6 +24,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8A14719D2D2AB49E00085962 /* Color+rgb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+rgb.swift"; sourceTree = "<group>"; };
 		8A79E9812D29BA84004B837F /* Generative.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Generative.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A79E9912D29BA86004B837F /* GenerativeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GenerativeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A79E99B2D29BA86004B837F /* GenerativeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GenerativeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,13 +73,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A14719C2D2AB48C00085962 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8A14719D2D2AB49E00085962 /* Color+rgb.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		8A79E9782D29BA84004B837F = {
 			isa = PBXGroup;
 			children = (
-				8A79E9832D29BA84004B837F /* Generative */,
+				8A14719C2D2AB48C00085962 /* Extensions */,
 				8A79E9942D29BA86004B837F /* GenerativeTests */,
 				8A79E99E2D29BA86004B837F /* GenerativeUITests */,
 				8A79E9822D29BA84004B837F /* Products */,
+				8A79E9832D29BA84004B837F /* Generative */,
 			);
 			sourceTree = "<group>";
 		};

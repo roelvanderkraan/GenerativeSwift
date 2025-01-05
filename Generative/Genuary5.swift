@@ -14,21 +14,22 @@ struct Genuary5: View {
     //https://happycoding.io/tutorials/p5js/creating-classes/isometric-cubes
     //https://swiftui-lab.com/swiftui-animations-part4/
     // https://www.hackingwithswift.com/quick-start/swiftui/how-to-add-metal-shaders-to-swiftui-views-using-layer-effects
-    @State private var cubeSize: CGFloat = 50
+    //https://github.com/dejager/wallpaper/
+    @State private var cubeSize: CGFloat = 45
    private let animationDuration: Double = 2.0
     
     var body: some View {
         TimelineView(.animation) { timeline in
+            let now = timeline.date.timeIntervalSinceReferenceDate
             Canvas { context, size in
-                let now = timeline.date.timeIntervalSinceReferenceDate
-                let rows = 20
-                let columns = 20
+                
+                let rows = 9
+                let columns = 9
                 let startX: CGFloat = size.width / 2
                 let startY: CGFloat = cubeSize
-                context.addFilter(.contrast(20.0))
                 for row in 0..<rows {
                     for column in 0..<columns {
-                        let xOffset = CGFloat(column - row) * cubeSize  * -(now.remainder(dividingBy:4)) * 0.5
+                        let xOffset = CGFloat(column - row) * cubeSize  * (10 * sin(now * 0.5)) * 0.25
                         let yOffset = CGFloat(row + column) * cubeSize * 0.5
                         let zOffset = CGFloat(row + column) * cubeSize
                         
@@ -39,14 +40,14 @@ struct Genuary5: View {
                 
             }
         }
-        .background(Color.black)
-        
+        .background(color(red: 125, green: 76, blue: 152))
+        .ignoresSafeArea()
     }
     
     private func drawIsometricCube(context: inout GraphicsContext, origin: CGPoint, size: CGFloat) {
-        let frontColor = Color.blue
-        let sideColor = Color.black
-        let topColor = Color.pink
+        let frontColor = color(red: 105, green: 192, blue: 176)
+        let sideColor = color(red: 43, green: 40, blue: 41)
+        let topColor = color(red: 237, green: 236, blue: 234)
 
                // Calculate points for the isometric cube
                let p1 = origin
@@ -83,6 +84,14 @@ struct Genuary5: View {
                sideFace.addLine(to: p6)
                sideFace.closeSubpath()
                context.fill(sideFace, with: .color(sideColor))
+    }
+    
+    private func color(red: Int, green: Int, blue: Int) -> Color {
+        let normalizedRed = CGFloat(red) / 255
+        let normalizedGreen = CGFloat(green) / 255
+        let normalizedBlue = CGFloat(blue) / 255
+
+        return Color(red: normalizedRed, green: normalizedGreen, blue: normalizedBlue)
     }
 }
 
