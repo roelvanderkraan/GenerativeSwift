@@ -29,7 +29,7 @@ struct Genuary6: View {
             .id(redrawTrigger) // Causes the Canvas to redraw when updated
             .onAppear {
                 // Start a timer to trigger redraw every 5 seconds
-                Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { _ in
+                Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
                     redrawTrigger = UUID() // Change the ID to force a redraw
                 }
             }
