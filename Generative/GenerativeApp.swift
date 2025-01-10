@@ -11,7 +11,7 @@ import SwiftUI
 struct GenerativeApp: App {
     var body: some Scene {
         WindowGroup {
-            Genuary9()
+            Genuary10(increaseTau: Double.pi * 2)
         }
     }
 }
