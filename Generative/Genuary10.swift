@@ -29,10 +29,9 @@ struct Genuary10: View {
                         let y = columnYStart
                         if x > size.width && y > size.height { continue }
                         if x < 0 || y < 0 { continue }
-                        let rect = CGRect(origin: CGPoint(x: x, y: y), size: CGSize(width: tauPlusSingle, height: tau)).applying(.init(rotationAngle: angle))
+                        let rect = CGRect(origin: CGPoint(x: x, y: y), size: CGSize(width: halfTau, height: tau+tau)).applying(.init(rotationAngle: angle))
                         let circle = Ellipse()
                         let circlePath = circle.path(in: rect)
-                        context.opacity = CGFloat.random(in: halfTau*(single/tau)...single)
                         context.fill(circlePath, with: .color(.white))
                     }
                     columnXStart += tau + Double.random(in: single...tauPlusSingle)
