@@ -30,9 +30,33 @@
 		8A79E99B2D29BA86004B837F /* GenerativeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GenerativeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		45B186A32D3026B8009FB62B /* Exceptions for "Generative" folder in "Generative" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Shaders/Shaders.metal,
+			);
+			target = 8A79E9802D29BA84004B837F /* Generative */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		45B186A42D3026B8009FB62B /* Exceptions for "Generative" folder in "Copy Bundle Resources" phase from "Generative" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 8A79E97F2D29BA84004B837F /* Resources */;
+			membershipExceptions = (
+				Shaders/Shaders.metal,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		8A79E9832D29BA84004B837F /* Generative */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				45B186A32D3026B8009FB62B /* Exceptions for "Generative" folder in "Generative" target */,
+				45B186A42D3026B8009FB62B /* Exceptions for "Generative" folder in "Copy Bundle Resources" phase from "Generative" target */,
+			);
 			path = Generative;
 			sourceTree = "<group>";
 		};
